@@ -24,3 +24,16 @@ class UserSerializer(serializers.ModelSerializer):
         user.save()
 
         return user
+
+
+class IdeaSerializer(serializers.ModelSerializer):
+    """A serializer for ideas."""
+
+    class Meta:
+        model = models.Idea
+        fields = ('id', 'user_id', 'idea_text', 'creation_date', 'modification_date')
+        extra_kwargs = {
+                        'user_id': {'read_only': True},
+                        'modification_date': {'read_only': True}
+                    }
+                    
