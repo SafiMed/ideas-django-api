@@ -6,7 +6,7 @@ from . import views
 
 router = DefaultRouter()
 router.register('users', views.UserViewSet)
-router.register('users/(?P<id>\d+)/ideas', views.IdeaViewSet, base_name="urlname")
+router.register('users/(?P<id>\d+)/ideas', views.IdeaViewSet, base_name="ideas")
 router.register('login', views.LoginViewSet, base_name="login")
 
 urlpatterns = [

@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.utils import timezone
 
 from rest_framework import viewsets
 from rest_framework.response import Response
@@ -13,8 +14,6 @@ from . import models
 from . import serializers
 from . import permissions
 
-from datetime import datetime
-from django.utils import timezone
 
 # Create your views here.
 
@@ -26,21 +25,7 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = models.User.objects.all()
     authentication_classes = (TokenAuthentication,)
     permission_classes = (permissions.UpdateOwnUser,)
-"""
-    # For GET Requests
-    @list_route(url_path='ideas')
-    def get_ideas(self, request):
-       #Return a list of ideas of the current logged in user.
-
-        return Response({'status': 'GET'})
-
-    # For POST Requests
-    @detail_route(methods=['post'], url_path='idea')
-    def update_idea(self, request, pk):
-        #Updates the idea identified by the pk.
-        serializer = serializers.IdeaSerializer(data=request.data)
-        return Response(serializer)
-"""
+    
 
 class LoginViewSet(viewsets.ViewSet):
     """Check email and password and returns an auth token."""
