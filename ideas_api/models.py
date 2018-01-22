@@ -62,3 +62,17 @@ class User(AbstractBaseUser, PermissionsMixin):
         """Django uses this when it needs to convert the object to a string"""
 
         return self.email
+
+
+class Idea(models.Model):
+    """Users ideas."""
+
+    user_id = models.ForeignKey('User', on_delete=models.CASCADE)
+    idea_text = models.CharField(max_length=255)
+    creation_date = models.DateTimeField(auto_now_add=True)
+    modification_date = models.DateTimeField(default=None)
+
+    def __str__(self):
+        """Return the model as a string."""
+
+        return self.idea_text
