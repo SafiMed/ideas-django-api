@@ -8,7 +8,6 @@ from rest_framework.authentication import TokenAuthentication
 from rest_framework.authtoken.serializers import AuthTokenSerializer
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.permissions import IsAuthenticated
-from rest_framework.decorators import detail_route, list_route
 
 from . import models
 from . import serializers
